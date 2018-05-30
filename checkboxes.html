@@ -19,15 +19,37 @@ window.lightningjs||function(s){var w="lightningjs";function e(e,t){var r,v,g,n,
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <div id="container1">
+  <div>
     <div id="checkbox1"></div>
     <button id="confirm1">Confirm Optin #1</button>
   </div>
+  
   <hr />
-  <div id="checkbox2">
+  
+  <div>
     <div id="checkbox2"></div>
     <button id="confirm2">Confirm Optin #2</button>
   </div>
+
+<script type="text/javascript">
+(function iife() {
+  var checkboxContainer1 = document.getElementById('checkbox1'), button1 = document.getElementById('confirm1');
+  var checkboxContainer2 = document.getElementById('checkbox2'), button2 = document.getElementById('confirm2');
+  
+  _shopmsg("checkbox.create", checkboxContainer1, {"center_align":false}, function(checkbox1) {
+    button1.onclick = function() {
+      checkbox1.confirmOptin();
+    };
+  });
+  
+  _shopmsg("checkbox.create", checkboxContainer2, {"center_align":true}, function(checkbox2) {
+    button2.onclick = function() {
+      checkbox2.confirmOptin();
+    };
+  });
+  
+}());
+</script>  
 </body>
 
 </html>
