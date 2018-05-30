@@ -7,6 +7,57 @@
   <title>Shopmessage multiple checkbox demo</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style type="text/css">
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.hidden { display:none !important; }
+</style>
 <!-- START SHOPMESSAGE -->
 <script type="text/javascript">
 window.lightningjs||function(s){var w="lightningjs";function e(e,t){var r,v,g,n,a,d;return t&&(t+=(/\?/.test(t)?"&":"?")+"lv=1"),s[e]||(r=window,v=document,g=e,n=v.location.protocol,a="load",d=0,function(){s[g]=function(){var e=arguments,t=this,i=++d,n=t&&t!=r&&t.id||0;function o(){return o.id=i,s[g].apply(o,arguments)}return(m.s=m.s||[]).push([i,n,e]),o.then=function(e,t,n){var r=m.fh[i]=m.fh[i]||[],a=m.eh[i]=m.eh[i]||[],d=m.ph[i]=m.ph[i]||[];return e&&r.push(e),t&&a.push(t),n&&d.push(n),o},o};var m=s[g]._={};function e(){m.P(a),m.w=1,s[g]("_load")}m.fh={},m.eh={},m.ph={},m.l=t?t.replace(/^\/\//,("https:"==n?n:"http:")+"//"):t,m.p={0:+new Date},m.P=function(e){m.p[e]=new Date-m.p[0]},m.w&&e(),r.addEventListener?r.addEventListener(a,e,!1):r.attachEvent("on"+a,e);var f=function(){function t(){return["<head></head><",e,' onload="var d=',h,";d.getElementsByTagName('head')[0].",a,"(d.",d,"('script')).",i,"='",m.l,"'\"></",e,">"].join("")}var e="body",n=v[e];if(!n)return setTimeout(f,100);m.P(1);var r,a="appendChild",d="createElement",i="src",o=v[d]("div"),s=o[a](v[d]("div")),c=v[d]("iframe"),h="document",p="domain",l="contentWindow";o.style.display="none",n.insertBefore(o,n.firstChild).id=w+"-"+g,c.frameBorder="0",c.id=w+"-frame-"+g,/MSIE[ ]+6/.test(navigator.userAgent)&&(c[i]="javascript:false"),c.allowTransparency="true",s[a](c);try{c[l][h].open()}catch(e){m[p]=v[p],r="javascript:var d="+h+".open();d.domain='"+v.domain+"';",c[i]=r+"void(0);"}try{var u=c[l][h];u.write(t()),u.close()}catch(e){c[i]=r+'d.write("'+t().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}m.P(2)};m.l&&f()}()),s[e].lv="1",s[e]}var t=window[w]=e(w);t.require=e,t.modules=s}({}),window._shopmsg=lightningjs.require("_shopmsg","https://cdn.shopmsg.me/v1.0/shopmsg_sdk.js?c=7f1112aa6257bb1d0d433dd475567db63b4b040c"),function(e,t,n){var r,a=e.getElementsByTagName(t)[0];e.getElementById(n)||((r=e.createElement(t)).id=n,r.src="https://cdn.shopmsg.me/platform/B1PCKaEsxYqA/v1.0/initialize.js?c=7f1112aa6257bb1d0d433dd475567db63b4b040c",a.parentNode.insertBefore(r,a))}(document,"script","shopmsg-jssdk");
@@ -21,33 +72,40 @@ window.lightningjs||function(s){var w="lightningjs";function e(e,t){var r,v,g,n,
 
   <div style="background-color:#333;color:#f1f1f1;">
     <div id="checkbox1"></div>
-    <button id="confirm1">Confirm Optin #1</button>
+    <button id="confirm1" class="hidden">Confirm Optin #1</button>
   </div>
   
   <hr />
   
-  <div>
+  <div style="width:280px;margin:0 auto;">
     <div id="checkbox2"></div>
-    <button id="confirm2">Confirm Optin #2</button>
+    <button id="confirm2" class="hidden">Confirm Optin #2</button>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 (function iife() {
+  "use strict";
+
   var checkboxContainer1 = document.getElementById('checkbox1'), button1 = document.getElementById('confirm1');
   var checkboxContainer2 = document.getElementById('checkbox2'), button2 = document.getElementById('confirm2');
   
   _shopmsg("checkbox.create", checkboxContainer1, {"center_align":false, "skin":"dark"}).then(function(checkbox1) {
+    checkbox1.onRender(function() {
+      $(button1).removeClass('hidden');
+    });
     $(button1).click(function() {
       checkbox1.confirmOptin();
     });
   });
   
   _shopmsg("checkbox.create", checkboxContainer2, {"center_align":true}).then(function(checkbox2) {
+    checkbox2.onRender(function() {
+      $(button2).removeClass('hidden');
+    });
     $(button2).click(function() {
       checkbox2.confirmOptin();
     });
   });
-  
 }());
 </script>  
 </body>
