@@ -30,22 +30,22 @@ window.lightningjs||function(s){var w="lightningjs";function e(e,t){var r,v,g,n,
     <div id="checkbox2"></div>
     <button id="confirm2">Confirm Optin #2</button>
   </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 (function iife() {
   var checkboxContainer1 = document.getElementById('checkbox1'), button1 = document.getElementById('confirm1');
   var checkboxContainer2 = document.getElementById('checkbox2'), button2 = document.getElementById('confirm2');
   
   _shopmsg("checkbox.create", checkboxContainer1, {"center_align":false, "skin":"dark"}, function(checkbox1) {
-    button1.onclick = function() {
+    button1.click(function() {
       checkbox1.confirmOptin();
-    };
+    });
   });
   
   _shopmsg("checkbox.create", checkboxContainer2, {"center_align":true}, function(checkbox2) {
-    button2.onclick = function() {
+    $(button2).click(function() {
       checkbox2.confirmOptin();
-    };
+    });
   });
   
 }());
