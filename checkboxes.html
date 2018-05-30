@@ -36,13 +36,13 @@ window.lightningjs||function(s){var w="lightningjs";function e(e,t){var r,v,g,n,
   var checkboxContainer1 = document.getElementById('checkbox1'), button1 = document.getElementById('confirm1');
   var checkboxContainer2 = document.getElementById('checkbox2'), button2 = document.getElementById('confirm2');
   
-  _shopmsg("checkbox.create", checkboxContainer1, {"center_align":false, "skin":"dark"}, function(checkbox1) {
-    button1.click(function() {
+  _shopmsg("checkbox.create", checkboxContainer1, {"center_align":false, "skin":"dark"}).then(function(checkbox1) {
+    $(button1).click(function() {
       checkbox1.confirmOptin();
     });
   });
   
-  _shopmsg("checkbox.create", checkboxContainer2, {"center_align":true}, function(checkbox2) {
+  _shopmsg("checkbox.create", checkboxContainer2, {"center_align":true}).then(function(checkbox2) {
     $(button2).click(function() {
       checkbox2.confirmOptin();
     });
